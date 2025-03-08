@@ -37,6 +37,8 @@
   href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -52,26 +54,30 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">GaussianIP: Identity-Preserving Realistic 3D Human Generation via Human-Centric Diffusion Prior</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <span class="author-block">
+                    <a href="https://github.com/silence-tang" target="_blank">Zichen Tang</a>
+                    <span class="author-block">
+                    <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Yuan Yao</a>
+                    <span class="author-block">
+                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=C-7UhS9dBroC" target="_blank">Miaomiao Cui</a>
+                    <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=FJwtMf0AAAAJ&hl=zh-CN&oi=ao" target="_blank">Liefeng Bo</a>
+                    <span class="author-block">
+                    <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank">Hongyu Yang</a><sup>*</sup>,</span>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block">Institution Name<br>CVPR 2025</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
-                         <!-- Arxiv PDF link -->
+                      <!-- Arxiv PDF link -->
                       <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
@@ -95,7 +101,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/silence-tang/GaussianIP" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -129,11 +135,11 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
+        <source src="static/videos/banner.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        Given a text prompt and a reference image, GaussianIP can generate high-fidelity 3D human avatars within 45 min.
       </h2>
     </div>
   </div>
@@ -148,7 +154,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Text-guided 3D human generation has advanced with the development of efficient 3D representations and 2D-lifting methods like Score Distillation Sampling (SDS). However, current methods suffer from prolonged training times and often produce results that lack fine facial and garment details. In this paper, we propose GaussianIP, an effective two-stage framework for generating identity-preserving realistic 3D humans from text and image prompts. Our core insight is to leverage human-centric knowledge to facilitate the generation process. In stage 1, we propose a novel Adaptive Human Distillation Sampling (AHDS) method to rapidly generate a 3D human that maintains high identity consistency with the image prompt and achieves a realistic appearance. Compared to traditional SDS methods, AHDS better aligns with the human-centric generation process, enhancing visual quality with notably fewer training steps. To further improve the visual quality of the face and clothes regions, we design a View-Consistent Refinement (VCR) strategy in stage 2. Specifically, it produces detail-enhanced results of the multi-view images from stage 1 iteratively, ensuring the 3D texture consistency across views via mutual attention and distance-guided attention fusion. Then a polished version of the 3D human can be achieved by directly perform reconstruction with the refined images. Extensive experiments demonstrate that GaussianIP outperforms existing methods in both visual quality and training efficiency, particularly in generating identity-preserving results.
           </p>
         </div>
       </div>
@@ -157,128 +163,143 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Method -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        
+        <!-- 插入图像的位置：Pipeline -->
+        <figure class="image is-centered" style="text-align:center; margin-top:20px;">
+          <img src="static/images/pipeline.png" alt="Pipeline Overview" style="max-width:100%; height:auto;">
+          <figcaption>Overview of the GaussianIP framework. We combine 3D Gaussian Splatting (3DGS) with a human-centric diffusion prior to realize high-fidelity 3D human avatar generation. (a) We initialize 3D human Gaussians by densely sample from a SMPL-X mesh. Afterward, (b) a human-centric diffusion model is combined with a pose-guide ControlNet to produce AHDS guidance. The AHDS guidance consists of an HDS guidance, which is proposed to achieve better identity-preserving generation, and an Adaptive Human-specific Timestep Scheduling strategy, which accelerates the HDS training. Furthermore, we propose (c) a View-Consistent Refinement Mechanism to further enhance the delicate texture of faces and garments. We guide the denoising of key views $\boldsymbol{x}_0^P$ with attention features from main views $\boldsymbol{x}_0^M$ through Mutual Attention. Next, we align the denoising of an intermediate view $\boldsymbol{x}_0^I$ with that of its neighbor key views via distance-guided attention fusion. Finally, the refined multi-view images are leveraged to optimize the current 3DGS.</figcaption>
+        </figure>
+
+        <!-- 添加 timestep schedule 图像及说明 -->
+        <figure class="image is-centered" style="text-align:center; margin-top:20px;">
+          <img src="static/images/ts.png" alt="Timestep Schedule Illustration" style="max-width:100%; height:auto;">
+          <figcaption>Illustration of the optimized weight PDF for sampling timesteps and the corresponding timestep vs. training step (t-i) curve. a) Phase 1, 3 occupy the majority of the training steps, while Phase 2 occupies only a small portion, allowing a quick transition to the detailed texture learning in Phase 3. b) We sample the final timestep between the lower bound and $t_{\text{DG}}$ for each phase. Note that for the geometry phase ($i<500$), we sample between 500 and the maximum timestep to ensure a smooth start.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+<!-- Qualitative Comparisons -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Comparisons</h2>
+        
+        <!-- 插入 cmp.png 图像及说明 -->
+        <figure class="image is-centered" style="text-align:center; margin-top:20px;">
+          <img src="static/images/main_cmp.png" alt="Qualitative Comparisons" style="max-width:100%; height:auto;">
+          <figcaption>Qualitative comparison results with SOTA text-guided 3D human generation models. Please zoom in for better observation. Note that the baselines cannot handle image prompts, so we compare their text-to-3D results instead. Due to space limitations, please refer to the supplementary materials for the video comparison results.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End qualitative comparisons -->
+
 
 <!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
+<!-- <section class="hero is-small"> -->
+  <!-- <div class="hero-body"> -->
+    <!-- <div class="container"> -->
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+       <!-- <div class="item"> -->
         <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
+        <!-- <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/> -->
+        <!-- <h2 class="subtitle has-text-centered"> -->
+          <!-- First image description. -->
+        <!-- </h2> -->
+      <!-- </div> -->
+      <!-- <div class="item"> -->
         <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
+        <!-- <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/> -->
+        <!-- <h2 class="subtitle has-text-centered"> -->
+          <!-- Second image description. -->
+        <!-- </h2> -->
+      <!-- </div> -->
+      <!-- </h2> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </section> -->
 <!-- End image carousel -->
 
-
-
-
 <!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
+<!-- <section class="hero is-small is-light"> -->
+  <!-- <div class="hero-body"> -->
+    <!-- <div class="container"> -->
       <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+      <!-- <h2 class="title is-3">Video Presentation</h2> -->
+      <!-- <div class="columns is-centered has-text-centered"> -->
+        <!-- <div class="column is-four-fifths"> -->
           
-          <div class="publication-video">
+          <!-- <div class="publication-video"> -->
             <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </section> -->
 <!-- End youtube video -->
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
+<!-- <section class="hero is-small"> -->
+  <!-- <div class="hero-body"> -->
+    <!-- <div class="container"> -->
+      <!-- <h2 class="title is-3">Another Carousel</h2> -->
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <!-- <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%"> -->
             <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
+            <!-- <source src="static/videos/carousel1.mp4"
+            type="video/mp4"> -->
+          <!-- </video> -->
+        <!-- </div>
         <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
+          <video poster="" id="video2" autoplay controls muted loop height="100%"> -->
             <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
+            <!-- <source src="static/videos/carousel2.mp4"
+            type="video/mp4"> -->
+          <!-- </video>
         </div>
         <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\ -->
             <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
+            <!-- <source src="static/videos/carousel3.mp4"
             type="video/mp4">
           </video>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End video carousel -->
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
 
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>
+        <!-- @article{liu2023humangaussian,
+        title={HumanGaussian: Text-Driven 3D Human Generation with Gaussian Splatting},
+        author={Liu, Xian and Zhan, Xiaohang and Tang, Jiaxiang and Shan, Ying and Zeng, Gang and Lin, Dahua and Liu, Xihui and Liu, Ziwei},
+        journal={arXiv preprint arXiv:2311.17061},
+        year={2023} -->
+    </code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
@@ -289,13 +310,11 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
             You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-
         </div>
       </div>
     </div>
