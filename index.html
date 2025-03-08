@@ -139,7 +139,7 @@
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        Given a text prompt and a reference image, GaussianIP can generate high-fidelity 3D human avatars within 45 min.
+        Given a text prompt and a reference image, GaussianIP can generate high-fidelity 3D human avatars within 45 minutes.
       </h2>
     </div>
   </div>
@@ -173,13 +173,13 @@
         <!-- 插入图像的位置：Pipeline -->
         <figure class="image is-centered" style="text-align:center; margin-top:20px;">
           <img src="static/images/pipeline.png" alt="Pipeline Overview" style="max-width:100%; height:auto;">
-          <figcaption>Overview of the GaussianIP framework. We combine 3D Gaussian Splatting (3DGS) with a human-centric diffusion prior to realize high-fidelity 3D human avatar generation. (a) We initialize 3D human Gaussians by densely sample from a SMPL-X mesh. Afterward, (b) a human-centric diffusion model is combined with a pose-guide ControlNet to produce AHDS guidance. The AHDS guidance consists of an HDS guidance, which is proposed to achieve better identity-preserving generation, and an Adaptive Human-specific Timestep Scheduling strategy, which accelerates the HDS training. Furthermore, we propose (c) a View-Consistent Refinement Mechanism to further enhance the delicate texture of faces and garments. We guide the denoising of key views $\boldsymbol{x}_0^P$ with attention features from main views $\boldsymbol{x}_0^M$ through Mutual Attention. Next, we align the denoising of an intermediate view $\boldsymbol{x}_0^I$ with that of its neighbor key views via distance-guided attention fusion. Finally, the refined multi-view images are leveraged to optimize the current 3DGS.</figcaption>
+          <figcaption style="text-align:left; display:block; width:100%;">Overview of the GaussianIP framework. We combine 3D Gaussian Splatting (3DGS) with a human-centric diffusion prior to realize high-fidelity 3D human avatar generation. (a) We initialize 3D human Gaussians by densely sample from a SMPL-X mesh. Afterward, (b) a human-centric diffusion model is combined with a pose-guide ControlNet to produce AHDS guidance. The AHDS guidance consists of an HDS guidance, which is proposed to achieve better identity-preserving generation, and an Adaptive Human-specific Timestep Scheduling strategy, which accelerates the HDS training. Furthermore, we propose (c) a View-Consistent Refinement Mechanism to further enhance the delicate texture of faces and garments. We guide the denoising of key views $\boldsymbol{x}_0^P$ with attention features from main views $\boldsymbol{x}_0^M$ through Mutual Attention. Next, we align the denoising of an intermediate view $\boldsymbol{x}_0^I$ with that of its neighbor key views via distance-guided attention fusion. Finally, the refined multi-view images are leveraged to optimize the current 3DGS.</figcaption>
         </figure>
 
         <!-- 添加 timestep schedule 图像及说明 -->
         <figure class="image is-centered" style="text-align:center; margin-top:20px;">
           <img src="static/images/ts.png" alt="Timestep Schedule Illustration" style="max-width:100%; height:auto;">
-          <figcaption>Illustration of the optimized weight PDF for sampling timesteps and the corresponding timestep vs. training step (t-i) curve. a) Phase 1, 3 occupy the majority of the training steps, while Phase 2 occupies only a small portion, allowing a quick transition to the detailed texture learning in Phase 3. b) We sample the final timestep between the lower bound and $t_{\text{DG}}$ for each phase. Note that for the geometry phase ($i<500$), we sample between 500 and the maximum timestep to ensure a smooth start.</figcaption>
+          <figcaption style="text-align:left; display:block; width:100%;">Illustration of the optimized weight PDF for sampling timesteps and the corresponding timestep vs. training step (t-i) curve. a) Phase 1, 3 occupy the majority of the training steps, while Phase 2 occupies only a small portion, allowing a quick transition to the detailed texture learning in Phase 3. b) We sample the final timestep between the lower bound and $t_{\text{DG}}$ for each phase. Note that for the geometry phase ($i<500$), we sample between 500 and the maximum timestep to ensure a smooth start.</figcaption>
         </figure>
       </div>
     </div>
